@@ -49,6 +49,8 @@ require('lazy').setup({
 
     { import = 'custom.plugins.languages' },
 
+    { import = 'custom.plugins.media' },
+
     -- require 'kickstart.plugins.debug',
     -- require 'kickstart.plugins.lint',
 })
