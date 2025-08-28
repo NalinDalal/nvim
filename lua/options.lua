@@ -1,7 +1,7 @@
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 
-vim.o.shell = "/usr/bin/fish"
+vim.o.shell = "/opt/homebrew/bin/fish"
 vim.o.shellcmdflag = "-c"
 -- vim.o.shellredir = ">%s 2>&1"
 -- vim.o.shellpipe = "| tee"
