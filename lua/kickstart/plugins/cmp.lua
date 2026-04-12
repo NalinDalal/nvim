@@ -78,15 +78,7 @@ return {
 					end,
 					["<S-Tab>"] = function(fallback)
 						if cmp.visible() then
-							cmp.select_prev_item({ select = true })
-						else
-							fallback()
-						end
-					end,
-
-					["<C-i>"] = function(fallback)
-						if cmp.visible() then
-							cmp.mapping.confirm({ select = true })()
+							cmp.select_prev_item()
 						else
 							fallback()
 						end
@@ -94,7 +86,7 @@ return {
 
 					["<C-j>"] = function(fallback)
 						if cmp.visible() then
-							cmp.select_next_item({ select = true })
+							cmp.select_next_item()
 						else
 							fallback()
 						end
@@ -102,7 +94,7 @@ return {
 
 					["<C-k>"] = function(fallback)
 						if cmp.visible() then
-							cmp.select_prev_item({ select = true })
+							cmp.select_prev_item()
 						else
 							fallback()
 						end

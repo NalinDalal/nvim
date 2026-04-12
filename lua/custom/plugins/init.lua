@@ -3,5 +3,5 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-  { 'vyfor/cord.nvim' }
+  { 'vyfor/cord.nvim', event = "VeryLazy" }
 }

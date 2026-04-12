@@ -23,18 +23,8 @@ return {
 		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
-		ft = "markdown",
-		init = function()
-			vim.api.nvim_create_user_command("MarkdownPreview", function()
-				vim.fn["mkdp#util#open_preview_page"]()
-			end, {})
-			vim.api.nvim_create_user_command("MarkdownPreviewStop", function()
-				vim.fn["mkdp#util#stop_preview"]()
-			end, {})
-			vim.api.nvim_create_user_command("MarkdownPreviewToggle", function()
-				vim.fn["mkdp#util#toggle_preview"]()
-			end, {})
-		end,
+		ft = { "markdown" },
+		cmd = { "MarkdownPreview", "MarkdownPreviewStop", "MarkdownPreviewToggle" },
 	},
 	{
 		"tadmccorkle/markdown.nvim",
