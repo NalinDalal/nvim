@@ -42,6 +42,9 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagn
 
 -- toggle stuff
 vim.api.nvim_set_keymap("n", "<leader>ts", ":SupermavenToggle <CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>th", function()
+	require("snacks").picker.colorschemes()
+end, { desc = "Browse themes" })
 vim.keymap.set("n", "<leader>lw", ":LspStart tailwindcss<CR>", { desc = "Start Tailwind CSS LSP" })
 vim.keymap.set("n", "<leader>lt", ":LspStart ts_ls<CR>", { desc = "Start TypeScript LSP" })
 vim.keymap.set("n", "<leader>ld", ":LspStart denols<CR>", { desc = "Start Deno LSP" })
@@ -71,8 +74,10 @@ vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = tru
 -- markdown preview
 vim.api.nvim_set_keymap("n", "<leader>mp", ":MarkdownPreview<CR>", { noremap = true, silent = true })
 
--- zen mode
-vim.api.nvim_set_keymap("n", "<leader>z", ":ZenMode<cr>", { noremap = true, silent = true })
+-- zen mode (snacks)
+vim.keymap.set("n", "<leader>z", function()
+	Snacks.zen()
+end, { desc = "Zen Mode" })
 
 --  for trouble
 vim.api.nvim_set_keymap("n", "<leader>xx", ":Trouble<CR>", { noremap = true, silent = true })

@@ -88,13 +88,8 @@ return {
 			local builtin = require("telescope.builtin")
 
 			-- File operations
-			vim.keymap.set("n", "<leader>o", builtin.oldfiles, { desc = "old opened files" })
-			vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "search in buffers" })
-			vim.keymap.set("n", "<localleader>o", builtin.oldfiles, { desc = "old opened files" })
-			vim.keymap.set("n", "<leader>fo", builtin.oldfiles, { desc = "search in buffers(the opened files rn)" })
-			vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "find files" })
+			vim.keymap.set("n", "<leader>fo", builtin.oldfiles, { desc = "old opened files" })
 			vim.keymap.set("n", "<leader><space>", builtin.find_files, { desc = "find files" })
-			vim.keymap.set("n", "<leader>fc", builtin.colorscheme, { desc = "colorscheme" })
 
 			vim.api.nvim_set_keymap(
 				"n",
