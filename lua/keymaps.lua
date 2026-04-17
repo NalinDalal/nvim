@@ -99,6 +99,16 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("BufReadPost", {
+	pattern = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.bmp", "*.tiff", "*.webp", "*.svg", "*.ico" },
+	group = vim.api.nvim_create_augroup("image-preview", { clear = true }),
+	callback = function()
+		vim.bo.buftype = "nowrite"
+		vim.bo.modifiable = false
+		vim.bo.readonly = true
+	end,
+})
+
 local function toggle_boolean()
 	local word = vim.fn.expand("<cword>")
 	if word == "true" then

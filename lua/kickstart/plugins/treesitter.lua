@@ -6,8 +6,6 @@ return {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 		build = ":TSUpdate",
-		main = "nvim-treesitter.configs", -- Sets main module to use for opts
-		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 		opts = {
 			ensure_installed = {
 				"bash",
@@ -23,13 +21,9 @@ return {
 				"vim",
 				"vimdoc",
 			},
-			-- Autoinstall languages that are not installed
 			auto_install = true,
 			highlight = {
 				enable = true,
-				-- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-				--  If you are experiencing weird indenting issues, add the language to
-				--  the list of additional_vim_regex_highlighting and disabled languages for indent.
 				additional_vim_regex_highlighting = { "ruby" },
 			},
 			indent = { enable = true, disable = { "ruby" } },
@@ -45,9 +39,8 @@ return {
 			textobjects = {
 				select = {
 					enable = true,
-					lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+					lookahead = true,
 					keymaps = {
-						-- You can use the capture groups defined in textobjects.scm
 						["aa"] = "@parameter.outer",
 						["ia"] = "@parameter.inner",
 						["af"] = "@function.outer",
@@ -58,7 +51,7 @@ return {
 				},
 				move = {
 					enable = false,
-					set_jumps = false, -- whether to set jumps in the jumplist
+					set_jumps = false,
 					goto_next_start = {
 						["<leader>]m"] = "@function.outer",
 						["<leader>]o"] = "@class.outer",
@@ -78,12 +71,8 @@ return {
 				},
 			},
 		},
-		-- There are additional nvim-treesitter modules that you can use to interact
-		-- with nvim-treesitter. You should go explore a few and see what interests you:
-		--
-		--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-		--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-		--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+		config = function(_, opts)
+			require("nvim-treesitter").setup(opts)
+		end,
 	},
 }
--- vim: ts=4 sts=4 sw=4 et

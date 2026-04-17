@@ -18,6 +18,10 @@ return {
        ╚═══╝  ╚═╝╚═╝     ╚═╝╚══════╝]],
 				},
 			},
+			image = {
+				enable = true,
+				doc = { enable = true },
+			},
 			indent = {
 				enabled = true,
 				animate = { enabled = false },
