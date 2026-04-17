@@ -88,8 +88,7 @@ vim.api.nvim_set_keymap("n", "<leader>xr", ":Trouble lsp_references<CR>", { nore
 --  for nvim-tree
 
 -- NOTE: for git
-vim.api.nvim_set_keymap("n", "<leader>gg", ":Gitsigns <CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>lg", ":!tg <CR>", { noremap = true })
+vim.keymap.set("n", "<leader>lg", ":!tg <CR>", { noremap = true })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
