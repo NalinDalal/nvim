@@ -8,6 +8,7 @@ return {
 	{
 		"IogaMaster/neocord",
 		event = "VeryLazy",
+		enabled = false,
 		opts = {
 			logo = "auto",
 			logo_tooltip = nil,
