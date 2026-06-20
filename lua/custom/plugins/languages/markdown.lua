@@ -35,7 +35,7 @@ return {
 	},
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		ft = { "markdown", "mdx" },
+		ft = { "markdown", "mdx", "opencode_output" },
 		opts = {
 			checkbox = {
 				unchecked = {
