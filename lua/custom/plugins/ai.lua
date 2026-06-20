@@ -18,19 +18,10 @@ return {
 			})
 		end,
 	},
-
 	{
 		"sudo-tee/opencode.nvim",
 		config = function()
-			require("opencode").setup({
-				default_global_keymaps = true,
-				keymap_prefix = "<leader>o",
-				ui = {
-					position = "right",
-					window_width = 0.35,
-					enable_treesitter_markdown = false,
-				},
-			})
+			require("opencode").setup({})
 		end,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -38,5 +29,4 @@ return {
 		},
 	},
 }
-
 -- vim: ts=4 sts=4 sw=4 et
