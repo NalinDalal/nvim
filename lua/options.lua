@@ -36,9 +36,7 @@ vim.opt.mouse = "a"
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
-vim.schedule(function()
-	vim.opt.clipboard = "unnamedplus"
-end)
+vim.opt.clipboard = "unnamedplus"
 
 -- Enable break indent
 vim.opt.breakindent = true

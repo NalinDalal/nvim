@@ -3,6 +3,10 @@ vim.keymap.set({ "i" }, "jj", "<Esc>", { silent = true })
 
 vim.keymap.set({ "i" }, "jj", "<Esc>", { silent = true })
 
+vim.keymap.set({ "n", "v" }, "<D-v>", '"+p', { silent = true })
+vim.keymap.set("i", "<D-v>", '<C-r>+', { silent = true })
+vim.keymap.set("c", "<D-v>", '<C-r>+', { silent = true })
+
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
 
