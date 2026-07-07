@@ -488,6 +488,7 @@ wk.add({
 				{ "<localleader>q", group = " diagnostics" },
 				{ "<leader>c", group = " copilot" },
 				{ "<leader>o", group = " opencode" },
+				{ "<leader>k", group = " kilo" },
 				{ "<leader>r", group = " refactor" },
 				{ "<leader>w", group = " Workspace" },
 				{ "<localleader>d", group = " search dir" },

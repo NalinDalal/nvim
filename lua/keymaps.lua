@@ -127,4 +127,6 @@ local function toggle_boolean()
 	end
 end
 
+vim.api.nvim_set_keymap("n", "<leader>kk", ":vsplit | terminal kilo<CR>", { noremap = true, silent = true })
+
 -- Create a keymap for normal mode
