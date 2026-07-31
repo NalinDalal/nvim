@@ -20,8 +20,21 @@ return {
 	},
 	{
 		"sudo-tee/opencode.nvim",
+		cmd = "Opencode",
 		config = function()
-			require("opencode").setup({})
+			require("opencode").setup({
+				ui = {
+					position = "float",
+					input_position = "bottom",
+					float = {
+						width = 0.95,
+						height = 0.9,
+						border = "rounded",
+						gap = 1,
+						zindex = 40,
+					},
+				},
+			})
 		end,
 		dependencies = {
 			"nvim-lua/plenary.nvim",

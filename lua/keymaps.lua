@@ -45,7 +45,7 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
 
 -- toggle stuff
-vim.api.nvim_set_keymap("n", "<leader>ts", ":SupermavenToggle <CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>as", ":SupermavenToggle <CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>th", function()
 	require("snacks").picker.colorschemes()
 end, { desc = "Browse themes" })
@@ -127,6 +127,26 @@ local function toggle_boolean()
 	end
 end
 
-vim.api.nvim_set_keymap("n", "<leader>kk", ":vsplit | terminal kilo<CR>", { noremap = true, silent = true })
+-- ai tools
+vim.keymap.set("n", "<leader>ak", function()
+	Snacks.terminal({ cmd = "kilo" })
+end, { desc = "Kilo AI" })
+
+vim.keymap.set("n", "<leader>at", function()
+	Snacks.terminal({ cmd = "kilo" })
+end, { desc = "AI Terminal" })
+
+vim.keymap.set("n", "<leader>ao", function()
+	vim.cmd("Opencode toggle")
+end, { desc = "OpenCode" })
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "OpencodeToggle",
+	callback = function()
+		vim.defer_fn(function()
+			vim.cmd("only")
+		end, 100)
+	end,
+})
 
 -- Create a keymap for normal mode
