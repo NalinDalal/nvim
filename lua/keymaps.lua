@@ -132,10 +132,6 @@ vim.keymap.set("n", "<leader>ak", function()
 	Snacks.terminal({ cmd = "kilo" })
 end, { desc = "Kilo AI" })
 
-vim.keymap.set("n", "<leader>at", function()
-	Snacks.terminal({ cmd = "kilo" })
-end, { desc = "AI Terminal" })
-
 vim.keymap.set("n", "<leader>ao", function()
 	vim.cmd("Opencode toggle")
 end, { desc = "OpenCode" })
