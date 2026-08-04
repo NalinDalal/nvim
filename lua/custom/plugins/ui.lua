@@ -101,6 +101,11 @@ return {
 	},
 
 	{
+		"sainnhe/edge",
+		lazy = true,
+	},
+
+	{
 		"MysticalDevil/inlay-hints.nvim",
 		event = "LspAttach",
 		dependencies = { "neovim/nvim-lspconfig" },

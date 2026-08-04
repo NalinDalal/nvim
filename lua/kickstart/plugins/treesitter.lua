@@ -25,6 +25,7 @@ return {
 			highlight = {
 				enable = true,
 				additional_vim_regex_highlighting = { "ruby" },
+				disable = { "lua" },
 			},
 			indent = { enable = true, disable = { "ruby" } },
 			incremental_selection = {

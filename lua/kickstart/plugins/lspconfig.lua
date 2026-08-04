@@ -62,17 +62,6 @@ return {
 
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-					-- KILL ts_ls if we're in a Deno project
-					if client and client.name == "ts_ls" then
-						local bufnr = event.buf
-						local has_deno = vim.fs.root(bufnr, { "deno.json", "deno.jsonc" })
-						if has_deno then
-							vim.notify("Stopping ts_ls in Deno project", vim.log.levels.WARN)
-							vim.lsp.stop_client(client.id, true)
-							return
-						end
-					end
-
 					if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
 						local highlight_augroup =
 							vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
@@ -137,7 +126,6 @@ return {
 					"rust_analyzer",
 					"basedpyright",
 					"clangd",
-					"denols",
 					"tailwindcss",
 					"ts_ls",
 				},
@@ -203,8 +191,6 @@ return {
 						})
 					end,
 
-					-- SKIP denols and ts_ls - we handle manually
-					denols = function() end,
 					tailwindcss = function()
 						lspconfig.tailwindcss.setup({
 							capabilities = capabilities,
@@ -213,51 +199,6 @@ return {
 					end,
 					ts_ls = function() end,
 				},
-			})
-
-			-- Manual handling for Deno vs Node. js
-			vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
-				pattern = { "*.js", "*.jsx", "*.ts", "*.tsx" },
-				callback = function()
-					local bufnr = vim.api.nvim_get_current_buf()
-
-					-- Check if LSP already attached to this buffer
-					local clients = vim.lsp.get_clients({ bufnr = bufnr })
-					for _, client in ipairs(clients) do
-						if client.name == "denols" then
-							return
-						end
-					end
-
-					-- Try to find deno. json first (DENO TAKES PRIORITY)
-					local deno_root = vim.fs.root(bufnr, { "deno.json", "deno.jsonc" })
-					if deno_root then
-						print("Found deno.json at:  " .. deno_root .. " - Starting denols")
-						vim.lsp.start({
-							name = "denols",
-							cmd = { "deno", "lsp" },
-							root_dir = deno_root,
-							capabilities = capabilities,
-							settings = {
-								deno = {
-									enable = true,
-									unstable = true,
-									lint = true,
-									suggest = {
-										imports = {
-											hosts = {
-												["https://deno.land"] = true,
-												["https://cdn.nest.land"] = true,
-												["https://crux.land"] = true,
-											},
-										},
-									},
-								},
-							},
-						})
-						return -- STOP HERE - don't check for Node. js
-					end
-				end,
 			})
 		end,
 	},

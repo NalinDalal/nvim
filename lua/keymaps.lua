@@ -51,7 +51,6 @@ vim.keymap.set("n", "<leader>th", function()
 end, { desc = "Browse themes" })
 vim.keymap.set("n", "<leader>lw", ":LspStart tailwindcss<CR>", { desc = "Start Tailwind CSS LSP" })
 vim.keymap.set("n", "<leader>lt", ":LspStart ts_ls<CR>", { desc = "Start TypeScript LSP" })
-vim.keymap.set("n", "<leader>ld", ":LspStart denols<CR>", { desc = "Start Deno LSP" })
 
 vim.api.nvim_set_keymap("n", "<leader>ti", ":InlayHintsToggle <CR>", { noremap = true, silent = true })
 
