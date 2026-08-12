@@ -1,8 +1,6 @@
 vim.keymap.set({ "i" }, "jk", "<Esc>", { silent = true })
 vim.keymap.set({ "i" }, "jj", "<Esc>", { silent = true })
 
-vim.keymap.set({ "i" }, "jj", "<Esc>", { silent = true })
-
 vim.keymap.set({ "n", "v" }, "<D-v>", '"+p', { silent = true })
 vim.keymap.set("i", "<D-v>", '<C-r>+', { silent = true })
 vim.keymap.set("c", "<D-v>", '<C-r>+', { silent = true })
@@ -41,9 +39,6 @@ vim.api.nvim_set_keymap("n", "<leader><Tab>", ":tabnext<CR>", { noremap = true, 
 vim.api.nvim_set_keymap("n", "<leader>ll", ":Lazy<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>lm", ":Mason<CR>", { noremap = true, silent = true })
 
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-
 -- toggle stuff
 vim.api.nvim_set_keymap("n", "<leader>as", ":SupermavenToggle <CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>th", function()
@@ -52,7 +47,7 @@ end, { desc = "Browse themes" })
 vim.keymap.set("n", "<leader>lw", ":LspStart tailwindcss<CR>", { desc = "Start Tailwind CSS LSP" })
 vim.keymap.set("n", "<leader>lt", ":LspStart ts_ls<CR>", { desc = "Start TypeScript LSP" })
 
-vim.api.nvim_set_keymap("n", "<leader>ti", ":InlayHintsToggle <CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ti", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))<CR>", { noremap = true, silent = true })
 
 vim.api.nvim_set_keymap("n", "<leader>tS", ":set spell <CR>", { noremap = true, silent = true })
 

@@ -50,26 +50,6 @@ return {
 						["ic"] = "@class.inner",
 					},
 				},
-				move = {
-					enable = false,
-					set_jumps = false,
-					goto_next_start = {
-						["<leader>]m"] = "@function.outer",
-						["<leader>]o"] = "@class.outer",
-					},
-					goto_next_end = {
-						["<leader>]M"] = "@function.outer",
-						["<leader>]o"] = "@class.outer",
-					},
-					goto_previous_end = {
-						["<leader>[M"] = "@function.outer",
-						["<leader>[o"] = "@class.outer",
-					},
-					goto_previous_start = {
-						["<leader>[m"] = "@function.outer",
-						["<leader>[o"] = "@class.outer",
-					},
-				},
 			},
 		},
 		config = function(_, opts)

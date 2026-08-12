@@ -105,6 +105,12 @@ return {
 				"html-lsp",
 				"rust-analyzer",
 				"clang-format",
+				"biome",
+				"rustywind",
+				"prettier",
+				"prettierd",
+				"black",
+				"google-java-format",
 			}
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 

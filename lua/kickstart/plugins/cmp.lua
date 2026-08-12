@@ -3,11 +3,6 @@ return {
 		"hrsh7th/nvim-cmp", --cmp stands for completion duh
 		event = "InsertEnter",
 		dependencies = {
-			"L3MON4D3/LuaSnip",
-			"saadparwaiz1/cmp_luasnip",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
 			{
 				"L3MON4D3/LuaSnip",
 				build = (function()
@@ -32,11 +27,8 @@ return {
 				},
 			},
 			"saadparwaiz1/cmp_luasnip",
-
-			-- Adds other completion capabilities.
-			--  nvim-cmp does not ship with all sources by default. They are split
-			--  into multiple repos for maintenance purposes.
 			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 		},
 		config = function()
@@ -129,9 +121,6 @@ return {
 				}),
 				sources = {
 					{
-						name = "nvim_lua",
-					},
-					{
 						name = "nvim_lsp",
 					},
 					{
@@ -156,9 +145,8 @@ return {
 				},
 				formatting = {
 					format = function(entry, item)
-						item.menu = ({
-							nvim_lua = "[lua]",
-							nvim_lsp = "[lsp]",
+item.menu = ({
+						nvim_lsp = "[lsp]",
 							luasnip = "[snip]",
 							buffer = "[buf]",
 							path = "[path]",

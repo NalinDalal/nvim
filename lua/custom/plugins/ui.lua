@@ -352,12 +352,6 @@ return {
 			"nvim-lualine/lualine.nvim",
 			event = { "BufReadPost", "BufNewFile" },
 
-			nvimlogo = {
-				function()
-					return ""
-				end,
-			},
-
 			opts = {
 
 				options = {
@@ -372,9 +366,9 @@ return {
 					lualine_b = { "branch", "diff", "diagnostics" },
 					lualine_c = { "encoding", "filesize" },
 					lualine_x = { "fileformat" },
-					lualine_y = { "progress", "location" },
-					lualine_z = { "wpm" },
-				},
+lualine_y = { "progress", "location" },
+				lualine_z = { "searchcount" },
+			},
 				inactive_sections = {
 					lualine_a = {},
 					lualine_b = {},
@@ -480,7 +474,6 @@ wk.add({
 				{ "<leader>d", group = " document" },
 				{ "<localleader>q", group = " diagnostics" },
 			{ "<leader>a", group = " ai" },
-			{ "<leader>c", group = " copilot" },
 			{ "<leader>o", group = " opencode" },
 			{ "<leader>k", group = " kilo" },
 				{ "<leader>r", group = " refactor" },
