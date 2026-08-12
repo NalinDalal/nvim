@@ -118,9 +118,6 @@ return {
 
 			-- Setup mason-lspconfig for auto-installing and setting up servers
 			require("mason-lspconfig").setup({
-				automatic_enable = {
-					exclude = { "tailwindcss" },
-				},
 				ensure_installed = {
 					"lua_ls",
 					"rust_analyzer",
@@ -128,6 +125,7 @@ return {
 					"clangd",
 					"tailwindcss",
 					"ts_ls",
+					"prismals",
 				},
 				handlers = {
 					-- Default handler
@@ -191,12 +189,6 @@ return {
 						})
 					end,
 
-					tailwindcss = function()
-						lspconfig.tailwindcss.setup({
-							capabilities = capabilities,
-							autostart = false,
-						})
-					end,
 					ts_ls = function() end,
 				},
 			})
