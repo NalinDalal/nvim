@@ -103,6 +103,7 @@ return {
 				"stylua",
 				"lua_ls",
 				"html-lsp",
+				"rust-analyzer",
 				"clang-format",
 			}
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
@@ -118,9 +119,11 @@ return {
 
 			-- Setup mason-lspconfig for auto-installing and setting up servers
 			require("mason-lspconfig").setup({
+				automatic_enable = {
+					exclude = { "rust_analyzer" },
+				},
 				ensure_installed = {
 					"lua_ls",
-					"rust_analyzer",
 					"basedpyright",
 					"clangd",
 					"tailwindcss",
@@ -149,20 +152,6 @@ return {
 						})
 					end,
 
-					-- Custom Rust Analyzer
-					rust_analyzer = function()
-						lspconfig.rust_analyzer.setup({
-							capabilities = capabilities,
-							settings = {
-								["rust-analyzer"] = {
-									diagnostics = {
-										disabled = { "unlinked-file" },
-									},
-								},
-							},
-						})
-					end,
-
 					-- Custom Python LSP
 					basedpyright = function()
 						lspconfig.basedpyright.setup({
@@ -176,9 +165,6 @@ return {
 									},
 								},
 							},
-							handlers = {
-								["textDocument/publishDiagnostics"] = function() end,
-							},
 						})
 					end,
 
@@ -188,8 +174,6 @@ return {
 							capabilities = capabilities,
 						})
 					end,
-
-					ts_ls = function() end,
 				},
 			})
 		end,

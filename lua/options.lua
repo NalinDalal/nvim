@@ -12,17 +12,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 vim.o.wrap = true
-vim.o.textwidth = 8000
 vim.opt.colorcolumn = "80"
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "markdown",
-	callback = function()
-		vim.o.textwidth = 0
-	end,
-})
-
-vim.o.linebreak = false
 
 vim.opt.expandtab = true
 vim.opt.tabstop = 4
