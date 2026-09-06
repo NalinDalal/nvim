@@ -67,7 +67,15 @@ end, { desc = "Toggle diagnostics" })
 
 vim.api.nvim_set_keymap("n", "<leader>tc", ":TSContextToggle<CR>", { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>e", function()
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.bo[buf].filetype == "snacks_dashboard" then
+			vim.api.nvim_buf_delete(buf, { force = true })
+			break
+		end
+	end
+	vim.cmd("NvimTreeToggle")
+end, { noremap = true, silent = true })
 
 -- markdown preview
 vim.api.nvim_set_keymap("n", "<leader>mp", ":MarkdownPreview<CR>", { noremap = true, silent = true })

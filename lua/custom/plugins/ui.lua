@@ -8,20 +8,19 @@ return {
 			picker = {},
 			notifier = { enabled = true },
 			dashboard = {
+				preset = {
+					header = [[
+        ███╗   ██╗███████╗██████╗ ██████╗ ███████╗██╗   ██╗
+        ████╗  ██║██╔════╝██╔══██╗██╔══██╗██╔════╝██║   ██║
+        ██╔██╗ ██║█████╗  ██████╔╝██║  ██║█████╗  ██║   ██║
+        ██║╚██╗██║██╔══╝  ██╔══██╗██║  ██║██╔══╝  ╚██╗ ██╔╝
+        ██║ ╚████║███████╗██║  ██║██████╔╝███████╗ ╚████╔╝
+        ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝  ╚═══╝]],
+				},
 				sections = {
-					{
-						section = "header",
-						text = [[
-      ██╗   ██╗██╗███╗   ███╗███████╗
-      ██║   ██║██║████╗ ████║██╔════╝
-      ██║   ██║██║██╔████╔██║█████╗  
-      ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══╝  
-       ╚████╔╝ ██║██║ ╚═╝ ██║███████╗
-        ╚═══╝  ╚═╝╚═╝     ╚═╝╚══════╝]],
-					},
-					{ section = "terminal", command = "echo '  Welcome back, Nalin 🖖'", height = 1, padding = 1 },
+					{ section = "header" },
 					{ section = "keys", gap = 1, padding = 1 },
-					{ section = "recent_files", cwd = true, limit = 5, padding = 1 },
+					{ section = "recent_files", cwd = true, limit = 6, padding = 1 },
 					{ section = "projects", padding = 1 },
 				},
 			},
@@ -485,12 +484,34 @@ wk.add({
 
 	{
 		"rmagatti/auto-session",
-		config = function()
-			require("auto-session").setup({
-				log_level = "error",
-				auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
-			})
-		end,
+		lazy = false,
+		opts = {
+			log_level = "error",
+			auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
+			auto_session_enabled = true,
+			auto_session_create_enabled = true,
+			post_restore_cmds = {
+				function()
+					vim.schedule(function()
+						local bufs = vim.fn.getbufinfo({ buflisted = 1, bufloaded = 1 })
+						local real_bufs = 0
+						for _, b in ipairs(bufs) do
+							local name = vim.fn.fnamemodify(b.name, ":t")
+							if b.name ~= "" and name ~= "NvimTree_1" and vim.bo[b.bufnr].buftype == "" then
+								real_bufs = real_bufs + 1
+							end
+						end
+						if real_bufs == 0 then
+							vim.cmd("silent! NvimTreeClose")
+							vim.cmd("silent! enew")
+							if Snacks and Snacks.dashboard then
+								Snacks.dashboard()
+							end
+						end
+					end)
+				end,
+			},
+		},
 	},
 }
 -- vim: ts=4 sts=4 sw=4 et
