@@ -59,9 +59,6 @@ return {
 				right_pad = 0,
 				highlight = "RenderMarkdownBullet",
 			},
-			list = {
-				color = "blue",
-			},
 			heading = {
 				enabled = true,
 				sign = false,
@@ -137,7 +134,7 @@ return {
 
 			indent = {
 				enabled = true,
-				chars = "│",
+				icon = "│",
 			},
 		},
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },

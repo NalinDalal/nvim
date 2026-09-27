@@ -487,9 +487,9 @@ wk.add({
 		lazy = false,
 		opts = {
 			log_level = "error",
-			auto_session_suppress_dirs = { "~/", "~/Downloads", "/" },
-			auto_session_enabled = true,
-			auto_session_create_enabled = true,
+			suppressed_dirs = { "~/", "~/Downloads", "/" },
+			auto_restore = true,
+			auto_create = true,
 			post_restore_cmds = {
 				function()
 					vim.schedule(function()

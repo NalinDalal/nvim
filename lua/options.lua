@@ -1,7 +1,8 @@
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 
-vim.o.shell = "/usr/bin/fish"
+local fish = vim.fn.exepath("fish")
+vim.o.shell = fish ~= "" and fish or "/bin/sh"
 vim.o.shellcmdflag = "-c"
 -- vim.o.shellredir = ">%s 2>&1"
 -- vim.o.shellpipe = "| tee"
@@ -82,4 +83,8 @@ vim.opt.backspace = "start,indent,eol"
 vim.opt.autoread = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+
+-- Include 'localoptions' so filetype/highlighting survive a session restore
+vim.o.sessionoptions =
+	"blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 -- vim: ts=4 sts=4 sw=4 et
